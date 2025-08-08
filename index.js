@@ -8,15 +8,15 @@ import fs from "fs";
 import { createServer } from "http";
 import cron from "node-cron";
 
-import { initializeSocket } from "./lib/socket.js";
+import { initializeSocket } from "./src/lib/socket.js";
 
-import { connectDB } from "./lib/db.js";
-import userRoutes from "./routes/user.route.js";
-import adminRoutes from "./routes/admin.route.js";
-import authRoutes from "./routes/auth.route.js";
-import songRoutes from "./routes/song.route.js";
-import albumRoutes from "./routes/album.route.js";
-import statRoutes from "./routes/stat.route.js";
+import { connectDB } from "./src/lib/db.js";
+import userRoutes from "./src/routes/user.route.js";
+import adminRoutes from "./src/routes/admin.route.js";
+import authRoutes from "./src/routes/auth.route.js";
+import songRoutes from "./src/routes/song.route.js";
+import albumRoutes from "./src/routes/album.route.js";
+import statRoutes from "./src/routes/stat.route.js";
 
 dotenv.config();
 
@@ -57,7 +57,7 @@ cron.schedule("0 * * * *", () => {
 				return;
 			}
 			for (const file of files) {
-				fs.unlink(path.join(tempDir, file), (err) => {});
+				fs.unlink(path.join(tempDir, file), (err) => { });
 			}
 		});
 	}
